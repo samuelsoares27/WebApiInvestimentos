@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "Investimentos\WebApi.csproj", "{B4DCBA3F-91D1-4365-A62F-F2AC329C05A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{51462167-ABFA-420B-B6FA-A622C2E5080A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4DCBA3F-91D1-4365-A62F-F2AC329C05A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4DCBA3F-91D1-4365-A62F-F2AC329C05A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4DCBA3F-91D1-4365-A62F-F2AC329C05A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4DCBA3F-91D1-4365-A62F-F2AC329C05A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51462167-ABFA-420B-B6FA-A622C2E5080A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51462167-ABFA-420B-B6FA-A622C2E5080A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51462167-ABFA-420B-B6FA-A622C2E5080A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51462167-ABFA-420B-B6FA-A622C2E5080A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D36557E2-1404-4792-813F-2B894966CA90}
+	EndGlobalSection
+EndGlobal
