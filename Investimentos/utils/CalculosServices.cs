@@ -4,11 +4,6 @@ namespace WebApi.utils
 {
     public static class CalculosServices
     {
-        public static bool ValidarRequest(CalculoCdiRequest request)
-        {
-            return request.ValorInicial > 0 && request.CdiAnual > 0 && request.PercentualCdi > 0 && request.MesesInvestidos > 0;
-        }
-
         public static decimal CalcularCdiDiario(decimal cdiAnual)
         {
             return cdiAnual / 252 / 100; // Dividido por 252 dias úteis no ano

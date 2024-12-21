@@ -15,7 +15,7 @@ namespace WebApi.Controllers
         [SwaggerResponse(200, "Resultado do cálculo de investimento CDB", typeof(CalculoCdiResponse))]
         public ActionResult<CalculoCdiResponse> CalcularCdi([FromBody] CalculoCdiRequest request)
         {
-            if (!CalculosServices.ValidarRequest(request))
+            if (!(request.ValorInicial > 0 && request.CdiAnual > 0 && request.PercentualCdi > 0 && request.MesesInvestidos > 0))
             {
                 return BadRequest(new CalculoCdiResponse
                 {
@@ -49,6 +49,30 @@ namespace WebApi.Controllers
                 Mensagem = "Cálculo realizado com sucesso."
             });
         }
-     
+
+        [HttpPost("calcular-juros-compostos")]
+        [SwaggerResponse(200, "Resultado do cálculo de Juros Compostos", typeof(CalculoJurosCompostosResponse))]
+        public ActionResult<CalculoJurosCompostosResponse> CalcularJurosCompostos([FromBody] CalculoJurosCompostosRequest request)
+        {
+            if (!(request.CapitalInicial > 0 && request.TaxaJuros > 0 && request.Periodo > 0))
+            {
+                return BadRequest(new CalculoJurosCompostosResponse
+                {
+                    Mensagem = "Todos os valores devem ser positivos e maiores que zero."
+                });
+            }
+
+            double montanteFinal = request.CapitalInicial * Math.Pow(1 + (request.TaxaJuros / 100), request.Periodo);
+
+            return Ok(new CalculoJurosCompostosResponse
+            {
+               CapitalInicial = request.CapitalInicial,
+               TaxaJuros = request.TaxaJuros,
+               Periodo = request.Periodo,
+               MontanteFinal = Math.Round(montanteFinal, 2),
+               Mensagem = "Cálculo realizado com sucesso."
+            });
+        }
+        
     }
 }
