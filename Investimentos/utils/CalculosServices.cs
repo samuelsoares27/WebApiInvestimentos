@@ -75,5 +75,23 @@ namespace WebApi.utils
         {
             return rendimentoFinalEmDias - valorTotalInvestido - impostoIOF - impostoIR;
         }
+
+        public static double CalcularJurosCompostos(double capitalInicial, double taxaJuros, int periodo)
+        {
+            return capitalInicial * Math.Pow(1 + (taxaJuros / 100), periodo);
+        }
+
+        public static string CalcularGasolinaEtanol(double gasolina, double etanol)
+        {
+
+            if ((etanol / gasolina) <= 0.70)
+            {
+                return "Compensa abastecer com ETANOL";
+            }
+            else
+            {
+                return "Compensa abastecer com GASOLINA.";
+            }
+        }
     }
 }

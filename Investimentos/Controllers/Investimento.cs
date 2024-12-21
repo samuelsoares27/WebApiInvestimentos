@@ -62,7 +62,7 @@ namespace WebApi.Controllers
                 });
             }
 
-            double montanteFinal = request.CapitalInicial * Math.Pow(1 + (request.TaxaJuros / 100), request.Periodo);
+            double montanteFinal = CalculosServices.CalcularJurosCompostos(request.CapitalInicial, request.TaxaJuros, request.Periodo);
 
             return Ok(new CalculoJurosCompostosResponse
             {
@@ -73,6 +73,27 @@ namespace WebApi.Controllers
                Mensagem = "Cálculo realizado com sucesso."
             });
         }
-        
+
+        [HttpPost("calcular-gasolina-etanol")]
+        [SwaggerResponse(200, "Resultado do cálculo de qual vale mais a pena abastecer, Gasolina ou Etanol", typeof(CalculoJurosCompostosResponse))]
+        public ActionResult<CalculoGasolinaEtanolResponse> CalcularGasolinaEtanol([FromBody] CalculoGasolinaEtanolRequest request)
+        {
+            if (!(request.Gasolina > 0 && request.Etanol > 0))
+            {
+                return BadRequest(new CalculoGasolinaEtanolResponse
+                {
+                    Mensagem = "Todos os valores devem ser positivos e maiores que zero."
+                });
+            }
+
+            string mensagem = CalculosServices.CalcularGasolinaEtanol(request.Gasolina, request.Etanol);
+
+            return Ok(new CalculoGasolinaEtanolResponse
+            {
+                Gasolina = request.Gasolina,
+                Etanol = request.Etanol,
+                Mensagem = $"Cálculo realizado com sucesso, {mensagem}"
+            });
+        }
     }
 }
